@@ -3,5 +3,5 @@ artifacts_root: artifacts
 data_ingestion: 
   root_dir: artifacts/data_ingestion
   data_url: https://github.com/Abhikkumar619/dataset/blob/main/creditCardFraud_28011964_120214.csv
-  raw_data: artifacts/data_ingestion/creditCard.zip
+  raw_data: artifacts/data_ingestion/creditCard.zip  
   unzip_dir: artifacts/data_ingestion
