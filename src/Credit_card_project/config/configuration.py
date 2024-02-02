@@ -1,6 +1,7 @@
 from src.Credit_card_project.utils.common import read_yaml,create_directories
 from src.Credit_card_project.constant import *
 from src.Credit_card_project.entity.config_entity import DataIngestionConfig
+from src.Credit_card_project.entity.config_entity import DataValidationConfig
 
 class ConfigurationManager: 
     def __init__(self,config_file_path= CONFIG_FILE_PATH,
@@ -25,5 +26,18 @@ class ConfigurationManager:
             unzip_dir=config.unzip_dir)
         
         return data_ingestion_config
+    
+    def get_data_validation_config(self)-> DataValidationConfig: 
+        
+        config=self.config.data_validation
+        schema=self.schema.COLUMNS
+        create_directories([config.root_dir])
+        
+        data_validation_config=DataValidationConfig(
+            root_dir= config.root_dir, 
+            data_path=config.data_path,
+            status_file=config.status_file,
+            all_schema=schema)
+        return data_validation_config
         
     
