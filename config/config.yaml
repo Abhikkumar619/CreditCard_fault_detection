@@ -11,3 +11,12 @@ data_validation:
   root_dir: artifacts/data_validation
   data_path: artifacts/data_ingestion/credit_card_fraud.csv
   status_file: artifacts/data_validation/status.txt
+
+data_transformation: 
+  root_dir: artifacts/data_transformation
+  data_dir: artifacts/data_ingestion/credit_card_fraud.csv
+  train_data_path: artifacts/data_transformation/train.csv
+  test_data_path: artifacts/data_transformation/test.csv
+  train_scaled: artifacts/data_transformation/train_scaled.csv
+  test_scaled: artifacts/data_transformation/test_scaled.csv
+  test_percentage: 0.25

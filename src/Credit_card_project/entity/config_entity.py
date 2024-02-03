@@ -17,3 +17,15 @@ class DataValidationConfig:
     status_file: Path
     all_schema: dict
     
+@dataclass(frozen=True)
+class DataTransformationConfig: 
+    root_dir: Path
+    data_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    test_percentage: float
+    target_column: str
+    train_scaled: Path
+    test_scaled: Path
+    
+    

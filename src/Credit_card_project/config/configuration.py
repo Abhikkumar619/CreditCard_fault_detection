@@ -2,6 +2,7 @@ from src.Credit_card_project.utils.common import read_yaml,create_directories
 from src.Credit_card_project.constant import *
 from src.Credit_card_project.entity.config_entity import DataIngestionConfig
 from src.Credit_card_project.entity.config_entity import DataValidationConfig
+from src.Credit_card_project.entity.config_entity import DataTransformationConfig
 
 class ConfigurationManager: 
     def __init__(self,config_file_path= CONFIG_FILE_PATH,
@@ -39,5 +40,25 @@ class ConfigurationManager:
             status_file=config.status_file,
             all_schema=schema)
         return data_validation_config
+    
+    def get_data_transformation_config(self)-> DataTransformationConfig:
+        
+        config= self.config.data_transformation
+        schema=self.schema.TARGET
+        create_directories([config.root_dir])
+        
+        get_data_transformation_config=DataTransformationConfig(
+                root_dir=config.root_dir,
+                data_dir=config.data_dir,
+                test_data_path=config.test_data_path,
+                train_data_path=config.train_data_path,
+                test_percentage=config.test_percentage,
+                target_column=schema, 
+                train_scaled=config.train_scaled,
+                test_scaled=config.test_scaled
+                
+                
+            )
+        return get_data_transformation_config
         
     
