@@ -2,7 +2,7 @@ from src.Credit_card_project import logger
 from src.Credit_card_project.config.configuration import ConfigurationManager
 from src.Credit_card_project.components.data_transformation import DataTransformation
 
-stage_name= "Data Transformation"
+stage_name= "Data_Transformation"
 class DataTransformationPipeline: 
     def __init__(self): 
         pass

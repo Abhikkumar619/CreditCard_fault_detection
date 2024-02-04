@@ -29,3 +29,12 @@ class DataTransformationConfig:
     test_scaled: Path
     
     
+from dataclasses import dataclass
+@dataclass(frozen=True)
+class ModelTrainerConfig: 
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    final_model: Path
+    
+    

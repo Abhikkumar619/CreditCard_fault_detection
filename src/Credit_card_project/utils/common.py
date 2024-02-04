@@ -5,7 +5,7 @@ from box import ConfigBox
 from pathlib import Path
 from src.Credit_card_project import logger
 import json
-import joblib
+import pickle
 
 @ensure_annotations
 def read_yaml(yaml_path: Path)->ConfigBox: 
@@ -37,12 +37,12 @@ def load_json(path: Path):
     
 @ensure_annotations
 def save_binaryFile(path: Path, data: any): 
-    joblib.dump(data,path )
-    logger.info(f"Binary file saved at {path}")
-
+    with open(path, 'wb') as file_path:
+        pickle.dump(data,file_path)
+        logger.info(f"Binary file saved at {path}")
 @ensure_annotations
 def load_binaryFile(path: Path): 
-    obj=joblib.load(path)
+    obj=pickle.load(path)
     logger.info(f"Binary file loaded sucessfully from path {path}")
     return obj
     
