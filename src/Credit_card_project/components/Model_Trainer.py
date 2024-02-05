@@ -6,7 +6,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import mean_squared_error, mean_absolute_error,accuracy_score
 from sklearn.model_selection import GridSearchCV
-
+from src.Credit_card_project.utils.common import save_object
+from src.Credit_card_project.entity.config_entity import ModelTrainerConfig
+from src.Credit_card_project import logger
+from pathlib import Path
 
 
 
@@ -124,7 +127,7 @@ class ModelTrainer:
         score=accuracy_score(y_test, y_pre)
         logger.info(f"After fine tune score {score}")
         
-        save_binaryFile(path=Path(self.config.final_model), data=Good_model)
+        save_object(file_path=Path(self.config.final_model), obj=Good_model)
         logger.info(f"Save model sucessful")
         
         

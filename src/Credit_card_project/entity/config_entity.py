@@ -27,6 +27,7 @@ class DataTransformationConfig:
     target_column: str
     train_scaled: Path
     test_scaled: Path
+    preprocess_path: Path
     
     
 from dataclasses import dataclass

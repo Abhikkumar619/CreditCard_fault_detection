@@ -6,6 +6,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from src.Credit_card_project.entity.config_entity import DataTransformationConfig
 from src.Credit_card_project import logger
+from src.Credit_card_project.utils.common import save_object
+from pathlib import Path
 
 
 
@@ -76,7 +78,10 @@ class DataTransformation:
         logger.info(f"NUmerical col: {num_col}")
         
         preprocessor=self.get_data_preprocessor(num_col)
+        
         logger.info(f"Preprocessor part {preprocessor}")
+        
+        save_object(file_path=Path(self.config.preprocess_path), obj=preprocessor)
         
         x_train_scaled=preprocessor.fit_transform(input_feature_train_df)
         x_train_scaled_df=pd.DataFrame(x_train_scaled, columns=preprocessor.get_feature_names_out())
@@ -102,9 +107,6 @@ class DataTransformation:
         logger.info(f"Sucessfully done")
         
         
-        
-        """
-        preprocessor.fit_transform(input_feature_test_df)
-        """
+    
 
         

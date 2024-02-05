@@ -36,10 +36,30 @@ def load_json(path: Path):
     logger.info(f"Json data loaded from path {path}")
     
 @ensure_annotations
-def save_binaryFile(path: Path, data: any): 
-    with open(path, 'wb') as file_path:
+def save_binaryFile(path: Path, data: object): 
+    with open(path, "wb") as file_path:
         pickle.dump(data,file_path)
         logger.info(f"Binary file saved at {path}")
+
+
+@ensure_annotations
+def save_object(file_path: Path, obj:object):
+    try:  
+        with open(file_path, "wb") as file_obj: 
+            pickle.dump(obj, file_obj)
+            
+    except Exception as e: 
+        raise e
+
+@ensure_annotations   
+def load_object(file_path: Path): 
+    try: 
+        with open(file_path,'rb') as file_obj: 
+            return pickle.load(file_obj)
+    except Exception as e: 
+        raise e   
+        
+        
 @ensure_annotations
 def load_binaryFile(path: Path): 
     obj=pickle.load(path)

@@ -38,7 +38,7 @@ try:
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 except Exception as e: 
     raise e  
-
+""" 
 stage_name="Model_Trainer"
 try: 
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Stage {stage_name} started >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
@@ -47,5 +47,6 @@ try:
     logger.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {stage_name} completed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 except Exception as e: 
     raise e  
-        
+"""      
+
         

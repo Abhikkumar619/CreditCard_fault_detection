@@ -56,25 +56,26 @@ class ConfigurationManager:
                 test_percentage=config.test_percentage,
                 target_column=schema, 
                 train_scaled=config.train_scaled,
-                test_scaled=config.test_scaled
+                test_scaled=config.test_scaled,
+                preprocess_path=config.model_path
                 
                 
             )
         return get_data_transformation_config
         
-def get_model_trainer_config(self)-> ModelTrainerConfig: 
-        
-        config=self.config.model_trainer
-        schema=self.schema.COLUMNS
+    def get_model_trainer_config(self)-> ModelTrainerConfig: 
+            
+            config=self.config.model_trainer
+            schema=self.schema.COLUMNS
 
-        create_directories([config.root_dir])
+            create_directories([config.root_dir])
+            
+            model_train_config=ModelTrainerConfig(
+                root_dir=config.root_dir,
+                train_data_path=config.train_data_path,
+                test_data_path=config.test_data_path,
+                final_model=config.Final_model)
+            
+            return model_train_config
         
-        model_train_config=ModelTrainerConfig(
-            root_dir=config.root_dir,
-            train_data_path=config.train_data_path,
-            test_data_path=config.test_data_path,
-            final_model=config.Final_model)
         
-        return model_train_config
-    
-    
