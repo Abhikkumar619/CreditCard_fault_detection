@@ -3,7 +3,7 @@ from src.Credit_card_project.constant import *
 from src.Credit_card_project.entity.config_entity import DataIngestionConfig
 from src.Credit_card_project.entity.config_entity import DataValidationConfig
 from src.Credit_card_project.entity.config_entity import DataTransformationConfig
-from src.Credit_card_project.entity.config_entity import ModelTrainerConfig
+from src.Credit_card_project.entity.config_entity import ModelTrainerConfig, PredictConfig
 
 class ConfigurationManager: 
     def __init__(self,config_file_path= CONFIG_FILE_PATH,
@@ -77,5 +77,15 @@ class ConfigurationManager:
                 final_model=config.Final_model)
             
             return model_train_config
+        
+    def get_predict_config(self)-> PredictConfig: 
+        config=self.config.model_predict
+        predict_config=PredictConfig(
+            predict_output_dirname=config.predict_output_dirname,
+            predict_file_name=config.predict_file_name,
+            preprocess_model=config.preprocess_model,
+            ml_model=config.ml_model
+        )
+        return predict_config
         
         

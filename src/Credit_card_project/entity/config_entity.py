@@ -38,4 +38,11 @@ class ModelTrainerConfig:
     test_data_path: Path
     final_model: Path
     
+@dataclass(frozen=True)
+class PredictConfig:
+    predict_output_dirname: str
+    predict_file_name: str
+    preprocess_model: Path
+    ml_model: Path
+    
     

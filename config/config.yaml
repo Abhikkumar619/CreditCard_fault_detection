@@ -28,6 +28,13 @@ model_trainer:
   test_data_path: artifacts/data_transformation/test.csv
   Final_model: artifacts/model_trainer/model.pkl
 
+model_predict:
+  predict_output_dirname: prediction
+  predict_file_name: predicted_file_name
+  preprocess_model: artifacts\data_transformation\preprocessor.pkl
+  ml_model: artifacts\model_trainer\model.pkl
+  
+
 
   
 
