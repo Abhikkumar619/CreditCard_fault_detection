@@ -30,7 +30,7 @@ model_trainer:
 
 model_predict:
   predict_output_dirname: prediction
-  predict_file_name: predicted_file_name
+  predict_file_name: predicted_filename.csv
   preprocess_model: artifacts\data_transformation\preprocessor.pkl
   ml_model: artifacts\model_trainer\model.pkl
   

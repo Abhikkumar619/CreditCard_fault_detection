@@ -9,7 +9,8 @@ from src.Credit_card_project.utils.common import load_object
 
 
 class PredictPipeline:
-    def __init__(self, config: PredictConfig): 
+    def __init__(self, config: PredictConfig, request: request):
+        self.request=request 
         self.config=config
     def save_input_files(self): 
         try: 
@@ -29,12 +30,12 @@ class PredictPipeline:
     
     def predict_model(self, input_dataframe): 
         try: 
-            model_preprocess=load_object(self.config.preprocess_model)
+            model_preprocess=load_object(Path('artifacts\data_transformation\preprocessor.pkl'))
             logger.info(f"data preprocessing model loaded sucessful")
-            preprocess_data=model_preprocess.transfrorm(input_dataframe)
+            preprocess_data=model_preprocess.fit_transform(input_dataframe)
             
-            ml_model=load_object(self.config.ml_model)
-            pred=ml_model.fit(preprocess_data)
+            ml_model=load_object(Path('artifacts\model_trainer\model.pkl'))
+            pred=ml_model.predict(preprocess_data)
             
             return pred
             
@@ -53,9 +54,12 @@ class PredictPipeline:
             
             input_dataframe[predict_column_name]=[pred for pred in prediction]
             
+            os.makedirs("predication", exist_ok=True)
             
+            input_dataframe.to_csv(os.path.join('predication', 'predicted_file.csv'), index=False)
             
-            
+            logger.info(f"Prediction is completed")
+             
         except Exception as e:
             raise e
     
